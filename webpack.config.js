@@ -1,7 +1,10 @@
 const path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { resolve } = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -50,12 +53,23 @@ module.exports = {
       template:'./src/public/index.html'
     }),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CopyWebpackPlugin([{
+      from:'./src/public',
+      to:path.resolve(__dirname, 'dist'),
+      ignore:['index.html']
+    }])
   ],
   devServer: {
     port: 9000,
     open:true,
     quiet:true
   },
-  devtool:'cheap-module-eval-source-map'
+  devtool:'cheap-module-eval-source-map',
+  resolve:{
+    extensions: [".js", ".json",".vue"],
+    alias: {
+      "@": path.resolve(__dirname, 'src')
+    }
+  }
 };
