@@ -1,10 +1,10 @@
 <template>
   <li class="list-group-item">
     <div class="handle">
-      <a href="javascript:;" @click="delteC">删除</a>
+      <a href="javascript:;" @click="delte">删除</a>
     </div>
     <p class="user">
-      <span>{{item.username}}</span>
+      <span>{{item.name}}</span>
       <span>说:</span>
     </p>
     <p class="centence">{{item.content}}!</p>
@@ -14,18 +14,19 @@
 <script>
 export default {
   name: "",
-  props:['item','deleteComment','index'],
-  methods: {
-    delteC(){
-      this.deleteComment(this.index)
-    }
-  },
-};
+  props:['item',"deletCp","index"],
+  methods:{
+      delte(){
+        this.deletCp(this.index)
+      }
+  }
+  
+}
 </script>
 
 <style scoped>
 li {
-  transition: .5s;
+  transition: 0.5s;
   overflow: hidden;
 }
 

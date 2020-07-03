@@ -3,26 +3,26 @@
     <h3 class="reply">评论回复：</h3>
     <h2 style="display: none">暂无评论，点击左侧添加评论！！！</h2>
     <ul class="list-group">
-      <Item v-for="(item,index) in comments"  
+      <Item v-for="(item, index) in comments" 
       :key="item.id" 
-      :item="item"
-      :deleteComment='deleteComment'
+      :item='item' 
       :index='index'
-      ></Item>
+      :deletCp='deletCp'>
+      </Item>
     </ul>
   </div>
 </template>
 
 <script>
-import Item from './items'
+import Item from "./items";
 export default {
   name: "",
   components:{
     Item
   },
-  props:['comments','addcomment','deleteComment']
-  
-}
+  props:['comments','deletCp']
+  }
+
 </script>
 
 <style scoped>

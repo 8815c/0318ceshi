@@ -3,7 +3,7 @@
     <form class="form-horizontal">
       <div class="form-group">
         <label>用户名</label>
-        <input type="text" class="form-control" placeholder="用户名" v-model="username" />
+        <input type="text" class="form-control" placeholder="用户名" v-model="name"/>
       </div>
       <div class="form-group">
         <label>评论内容</label>
@@ -21,35 +21,30 @@
 <script>
 export default {
   name: "",
-  props:['addcomment'],
+  props:["commen"],
   data(){
     return{
-      username:'',
+      name:'',
       content:''
     }
   },
-  methods: {
+  methods:{
     addC(){
-    let {username,content} = this
+      let {name,content} = this
 
-    if(username.trim() && content.trim()){
-      let id = Date.now()
+      if(name.trim() && content.trim()){
+        let id = Date.now()
 
-      let comment = {
-        username,
-        content,
-        id
+        let comment = {
+          name,
+          content,
+          id
+        }
+        this.commen(comment)
       }
-      this.addcomment(comment)
-
-      this.username=''
-      this.content=''
-    }else{
-      alert('请输入内容')
     }
   }
-  },
-}
+};
 </script>
 
 <style scoped>
